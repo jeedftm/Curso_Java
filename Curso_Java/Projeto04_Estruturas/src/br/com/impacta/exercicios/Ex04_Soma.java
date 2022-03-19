@@ -15,9 +15,10 @@ public class Ex04_Soma {
 			int irmaos = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantos irmãos você tem: ? "));
 			// perguntar em qual cidade ele mora e armazenar em 
 			// uma variavael 
-			String usuario = JOptionPane.showInputDialog("Qual seu nome: ?"); // Referencia
+			String cidade = JOptionPane.showInputDialog("Quantos irmãos você tem: ? ");
 			// perguntar qual é o salário, incluindo os centavos.
 			// armazenar em uma variavel chama salario
+			double salario = Double.parseDouble((JOptionPane.showInputDialog(null, "Qual seu sálario: ? "))
 			// declarar uma variavel do tipo String chamada Status.
 			// se o salario informado for maior que R$ 6.000,00
 			// esta variavel devera armazenar: "Você está acima da média. "
@@ -26,3 +27,5 @@ public class Ex04_Soma {
 		}
 	}
 }
+
+// FALTA IMPLEMENTAR O CÓDIGO 
