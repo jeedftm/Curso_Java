@@ -8,11 +8,27 @@ public class Automovel { // Tanto a classe com as váriaveis devem ser publicas p
 	private String placa;
 
 	public String mostrarDados() { // Sempre que não for vazio, não retorna nada
-		String resposta =  "Marca: " 		+ marca +
-										"\nModelo: "   + modelo +
-										"\nAno: "         + ano +
-										"\nPlaca: "       + placa ;
- 		return resposta;
+		
+		String titulo = "Dados do automovel";
+		
+		String resposta 	=	
+				titulo + "\n\nMarca: " + this.getMarca()+
+							"\nModelo: "   + this.getModelo() +
+							"\nAno: "         + this.getAno() +
+							"\nPlaca: "       + this.getPlaca() ;
+ 	return resposta;
+	}
+	
+public String mostrarDados(String titulo) { // Sempre que não for vazio, não retorna nada
+		
+	
+		
+		String resposta 	=	
+							"\n\nMarca: " + this.getMarca()+
+							"\nModelo: "   + this.getModelo() +
+							"\nAno: "         + this.getAno() +
+							"\nPlaca: "       + this.getPlaca() ;
+ 	return resposta;
 	}
 
 	// THIS referencia a própria classe.  
@@ -21,10 +37,15 @@ public class Automovel { // Tanto a classe com as váriaveis devem ser publicas p
 	// (atributos e metódos).
 	// Toda classe possui um THIS (identifica info que fazerm parte da classe).
 	public void lerDados (String marca, String modelo, int ano, String placa) {
-		this.marca = marca; 			// ATRIBUTOS X PARAMETROS 
-		this.modelo = modelo;		// ATRIBUTOS X PARAMETROS 
-		this.ano = ano;					// ATRIBUTOS X PARAMETROS 
-		this.placa = placa;				// ATRIBUTOS X PARAMETROS 
+		this.setMarca(marca);
+		this.setModelo(modelo);
+		this.setAno(ano);
+		this.setPlaca(placa);
+		
+	/*this.marca = marca; 						// ATRIBUTOS X PARAMETROS 
+		this.modelo = modelo;					// ATRIBUTOS X PARAMETROS 
+		this.ano = setAno(ano);				// ATRIBUTOS X PARAMETROS 
+		this.placa = placa;	 */					// ATRIBUTOS X PARAMETROS 
 	}
 	
 	// GET ENVIA
@@ -51,6 +72,9 @@ public class Automovel { // Tanto a classe com as váriaveis devem ser publicas p
 	}
 
 	public void setAno(int ano) {
+		if(ano < 1970) {
+			throw new NumberFormatException("O ano não pode ser menor que 1970. ");
+		}
 		this.ano = ano;
 	}
 
