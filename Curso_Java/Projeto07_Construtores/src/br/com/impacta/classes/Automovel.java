@@ -11,6 +11,23 @@ public class Automovel { // Tanto a classe com as váriaveis devem ser publicas p
 	private String modelo;
 	private  int ano;
 	private String placa;
+	
+	//construtores
+	public Automovel (String marca, String modelo) {
+		this.setMarca(marca);
+		this.setModelo(marca);	
+	}
+	public Automovel (String marca, String modelo, int ano) {
+		this.setMarca(marca);
+		this.setModelo(marca);	
+		this.setAno(ano);
+	}
+	public Automovel (String marca, String modelo, int ano, String placa) {
+		this.setMarca(marca);
+		this.setModelo(marca);	
+		this.setAno(ano);
+		this.setPlaca(placa);
+	}
 
 	public String mostrarDados() { // Sempre que não for vazio, não retorna nada
 		
@@ -18,10 +35,17 @@ public class Automovel { // Tanto a classe com as váriaveis devem ser publicas p
 		
 		String resposta 	=	
 				titulo + "\n\nMarca: " + this.getMarca()+
-							"\nModelo: "   + this.getModelo() +
-							"\nAno: "         + this.getAno() +
-							"\nPais Origem: " + PAIS_ORIGEM +
-							"\nPlaca: "       + this.getPlaca() ;
+							"\nModelo: "   + this.getModelo();
+							/*"\nAno: "         + this.getAno() +
+							"\nPais Origem: " + PAIS_ORIGEM ;
+							"\nPlaca: "       + this.getPlaca() ; */
+		if (this.getAno() > 0) {
+			 resposta += "\nAno: "         + this.getAno();
+		}
+		if (this.getPlaca() != null) {
+			resposta += "\nPlaca: "       + this.getPlaca() ;
+		}
+		resposta += "\nPais Origem: " + PAIS_ORIGEM;
  	return resposta;
 	}
 	

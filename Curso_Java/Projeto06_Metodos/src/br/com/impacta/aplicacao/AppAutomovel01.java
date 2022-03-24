@@ -29,10 +29,18 @@ public class AppAutomovel01 {
 		System.out.println("Print com o método \n");
 		String texto = 	auto.mostrarDados("Informações"); // "objeto auto" e classe mostrar
 		System.out.println(texto);
-		JOptionPane.showMessageDialog(null,texto);
-		JOptionPane.showMessageDialog(null,texto,"Relatório",JOptionPane.ERROR_MESSAGE);
+		//Automovel.PAIS_ORIGEM= "Argentina; ";
+				JOptionPane.showMessageDialog(null,auto.mostrarDados());
+		
+				//Automovel.PAIS_ORIGEM = "Colombia";
+				JOptionPane.showMessageDialog(null,auto.mostrarDados());
+				
+		//JOptionPane.showMessageDialog(null,texto);
+		//OptionPane.showMessageDialog(null,texto,"Relatório",JOptionPane.ERROR_MESSAGE);
 		
 		//int n = Integer.parseInt(JOptionPane.showInputDialog("Informe um número: "));
 
+				int j = (Integer) null;
+				// APENAS CLASSE PODE SER NULLO.
 	}
 }
