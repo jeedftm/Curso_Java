@@ -1,27 +1,42 @@
 package br.com.impacta.classes;
 
 public class Produto {
-	private int codigo;
-	private String descricao;
+	private final int codigo;
 	private String categoria;
+	private String descricao;
 	private double preco;
+	
+	private static int contador = 1;
+	
+	public Produto(String categoria, String descricao, double preco) {
+		this.codigo = contador++;
+		this.setCategoria(categoria);
+		this.setDescricao(descricao);
+		this.setPreco(preco);	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	public int getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 	public String getDescricao() {
 		return descricao;
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-	public String getCategoria() {
-		return categoria;
-	}
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
 	}
 	public double getPreco() {
 		return preco;
@@ -30,17 +45,22 @@ public class Produto {
 		this.preco = preco;
 	}
 	
-	 // Metódo mostrar () - Retorna todos os dados do objeto.
-	public String mostrar() {
+	//metodo mostrar() - retorna todos os dados do objeto.
+	public String mostrar() {	
 		
-	
 		
 		return "Código: " + this.getCodigo() +
-					"\n Descrição: " + this.getDescricao() +
-					"\n Categoria: " + this.getCategoria() +
-					"\n Preço: " + this.getPreco();
-		
+			   "\nDescrição: " + this.getDescricao() +
+			   "\nCategoria: " + this.getCategoria() + 
+			   "\nPreço: " + this.getPreco();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
-

@@ -4,27 +4,45 @@ public class Utilitarios {
 	
 	String curso = "Java";
 	
+	
+	//STATIC dispensa o uso de objeto, e nao 
+	  //ocupa espaco na memoria HEAP.
+	
+	//STATIC não precisa de nenhum objeto para ser
+	 // executado.
+	
+	//pelo fato de ser static o this nao funciona.
+	
 	public static double somar(double x, double y) {
 		return x + y;
 	}
-	// Metódo que receba como parametro um texto e retorne esse texto sem espaço.
-	public static String removerEspacos (String texto) {
-		return texto.replace (
-				" " // antigo 
-				, 
-				"" // novo
-				);
-	}
-	// Escrever um metódo que receba como parametro um nome e um sobrenome e retorne email formato: nome.sobrenome@impacta.com.br
-	public static String gerarEmail (String nome, String sobrenome) {
+	
+	//escrever um metodo que receba como parametro um texto
+   // e retorne este texto sem espacos.
+	public static String removerEspacos(String texto) {
+		     
+		//System.out.println(curso);
 		
-		return nome +"."+ sobrenome + "@impacta.com.br";
+		//SUBSTITUIR
+		
+		//trocar           //antigo //novo
+		return texto.replace(" ", "");		
 	}
 	
-public static String gerarEmail2 (String nome, String sobrenome) {
+	//escrever um metodo que receba como parametro um nome e um 
+	//sobrenome e retorne email no formato:nome.sobrenome@impacta.com.br
+	public static String gerarEmail(String nome,String sobrenome) {		
+		String email = nome.toLowerCase() + "." + sobrenome.toLowerCase() + "@impacta.com.br";		
+		return removerEspacos(email);	
 		
-		String email = nome + " . " + sobrenome + "@impacta.com.br";
-		return removerEspacos(email.toLowerCase()); // Metódo que remove e metodo que converte para minusculas
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+
 }

@@ -5,28 +5,28 @@ import javax.swing.JOptionPane;
 import br.com.impacta.classes.Produto;
 
 public class AppProduto {
-	public static void main(String[] args) {
-		Produto prod = new Produto(); // CTRL =+ SHIFT + O para realizar as importações necessárias.
+	public static void main(String[] args) {			
 		
+		while (true) {
+			String cat = JOptionPane.showInputDialog("Informe a categoria");
+			String desc = JOptionPane.showInputDialog("Informe a descrição");
+			double preco = Double.parseDouble(JOptionPane.showInputDialog("Informe o preço"));
+			Produto celular = new Produto(cat, desc, preco);
+			System.out.println(celular.mostrar());
+			JOptionPane.showMessageDialog(null, celular.mostrar());
+			
+			int opcao = JOptionPane
+			.showConfirmDialog(null,"Deseja continuar?", "Confirmação", 
+					JOptionPane.YES_NO_OPTION);
+			
+			 if( opcao == JOptionPane.NO_OPTION) {				 
+				 break;				 
+			 }			
+		}
 		
-		String cat = JOptionPane.showInputDialog("Categoria: ");
-		int cod = Integer.parseInt(JOptionPane.showInputDialog("Código: "));
-		String des = JOptionPane.showInputDialog("Descrição: ");
-		double pre = Double.parseDouble(JOptionPane.showInputDialog("Preço: "));
+	    
+	    
 		
-		
-		prod.setCategoria(cat);
-		prod.setCodigo(cod);
-		prod.setDescricao(des);
-		prod.setPreco(pre);
-		
-		System.out.println(prod.mostrar());
-		JOptionPane.showMessageDialog(null, prod.mostrar());
-		
-		//prod.codigo = 203040;
-		//prod.descricao = "Para apontar lápis";
-		//prod.categoria = "Material Escolar";
-		//prod.preco = 2.30;
-
 	}
+
 }

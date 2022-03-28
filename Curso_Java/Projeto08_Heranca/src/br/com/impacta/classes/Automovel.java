@@ -1,96 +1,113 @@
 package br.com.impacta.classes;
 
-import java.util.Random;
-
-public class Automovel { // Tanto a classe com as váriaveis devem ser publicas para acesso futuro
+public class Automovel {
 	
-	// Finalized 
-	public static final String PAIS_ORIGEM = "Brasil"; 
-	// Usa Static e Final junto, a variavel Tem que estar em Maisculo, por se tratar de uma constante
 	
-	// Atributos.
-	private String marca;
-	private String modelo;
-	private  int ano;
-	private String placa;
+	//FINALIZED 
+	
+	//STATIC FINAL TEMOS QUE INFORMAR UM VALOR INICIAL 
+	 // POR OBRIGACAO.  FINAL TEMOS QUE INFORMAR ALGO.
+	
+	
+	//Quando criamos uma constante (STATIC + FINAL)
+	// o nome deve ser maisuculo.
+	public static final String PAIS_ORIGEM = "Brasil";
+	
+	//atributos.
+	private	String	marca;  
+	private	String modelo;
+	private	int ano;
+	private	String placa;
 	
 	private final int chassi;
 	
 	
 	//construtores
-	public Automovel ( String marca, String modelo) {
-		this.chassi = (int)(Math.random()*1000);
+	public Automovel(String marca, String modelo) {			
+		this.chassi = (int)(Math.random() *1000);
 		this.setMarca(marca);
 		this.setModelo(modelo);	
 	}
-	public Automovel ( String marca, String modelo, int ano) {
-		this(marca,modelo);
+	
+	public Automovel(String marca, String modelo, int ano) {
+		this(marca,modelo);	
 		this.setAno(ano);
-	}
-	public Automovel ( String marca, String modelo, int ano, String placa) {
+			
+	}	
+	
+	public Automovel(String marca, String modelo, int ano, String placa) {
 		this(marca,modelo,ano);
 		this.setPlaca(placa);
 	}
-
-	public String mostrarDados() { // Sempre que não for vazio, não retorna nada
+//	public Automovel(String marca, String modelo, int ano, String placa) {
+//		
+//		this.marca = marca;
+//		this.modelo = modelo;
+//		this.ano = ano;
+//		this.placa = placa;
+//	}
+	
+	
+	
+	public String mostrar() {	
 		
-		String titulo = "Dados do automovel";
+		String titulo = "DADOS DO AUTOMÓVEL";
 		
-		String resposta 	=	
-				titulo + "\n\nMarca: " + this.getMarca()+
-							"\nModelo: "   + this.getModelo()+
-							"\nChassi : "   + this.getChassi()+
-							"\nAno: "         + this.getAno() +
-							"\nPais Origem: " + PAIS_ORIGEM +
-							"\nPlaca: "       + this.getPlaca() ; 
-		if (this.getAno() > 0) {
-			 resposta += "\nAno: "         + this.getAno();
+		String reposta = titulo +  "\n\nMarca: " + this.getMarca() + 
+				         "\nModelo: " + this.getModelo() +
+				         "\nChassi:" + this.getChassi();
+				        
+		
+		if(this.getAno() > 0) {
+			
+			reposta += "\nAno: " + this.getAno();
 		}
-		if (this.getPlaca() != null) {
-			resposta += "\nPlaca: "       + this.getPlaca() ;
+		
+		if(this.getPlaca() != null) {
+			
+			reposta += "\nPlaca: " + this.getPlaca();
 		}
-		resposta += "\nPais Origem: " + PAIS_ORIGEM;
- 	return resposta;
+		
+		reposta +=  "\nPais Origem: " + PAIS_ORIGEM;
+		
+		
+		return reposta;
+		
 	}
 	
-public String mostrarDados(String titulo) { // Sempre que não for vazio, não retorna nada
+   public String mostrar(String titulo) {	
 		
-	
 		
-		String resposta 	=	
-				"\n\nMarca: " + this.getMarca()+
-				"\nModelo: "   + this.getModelo()+
-				"\nChassi : "   + this.getChassi()+
-				"\nAno: "         + this.getAno() +
-				"\nPais Origem: " + PAIS_ORIGEM +
-				"\nPlaca: "       + this.getPlaca() ; 
- 	return resposta;
+		String reposta = titulo +  "\n\nMarca: " + this.getMarca() + 
+				         "\nModelo: " + this.getModelo() +				         
+				         "\nChassi:" + this.getChassi() + 
+				         "\nAno: " + this.getAno() +
+				         "\nPais Origem: " + PAIS_ORIGEM + 
+				         "\nPlaca: " + this.getPlaca();		
+		
+		return reposta;
+		
 	}
-
-	// THIS referencia a própria classe.  
-	// É uma referência que serve para acesso a todos.
-	// Os atributos da classe.
-	// (atributos e metódos).
-	// Toda classe possui um THIS (identifica info que fazerm parte da classe).
-	public void lerDados (String marca, String modelo, int ano, String placa) {
+   	
+	
+	//THIS = REFERENCIA A PROPRIA CLASSE
+	 // é uma referencia que serve para termos acesso a todos 
+	    // os atributos da classe. (atributos e metodos)
+	
+	//TODA CLASSE POSSUI UM THIS. (identifica info que fazem parte da classe)
+	
+   public int getChassi() {
+		return chassi;
+	}
+	
+	public void lerDados(String marca, String modelo, int ano, String placa ) {
+	
 		this.setMarca(marca);
 		this.setModelo(modelo);
 		this.setAno(ano);
 		this.setPlaca(placa);
-		
-	/*this.marca = marca; 						// ATRIBUTOS X PARAMETROS 
-		this.modelo = modelo;					// ATRIBUTOS X PARAMETROS 
-		this.ano = setAno(ano);				// ATRIBUTOS X PARAMETROS 
-		this.placa = placa;	 */					// ATRIBUTOS X PARAMETROS 
 	}
-	
-	// GET ENVIA
-	// SET RECEBE
 
-	public int getChassi() {
-		return chassi;
-	}
-	
 	public String getMarca() {
 		return marca;
 	}
@@ -108,13 +125,15 @@ public String mostrarDados(String titulo) { // Sempre que não for vazio, não ret
 	}
 
 	public int getAno() {
-		return ano;
+		return this.ano;
 	}
 
 	public void setAno(int ano) {
+		
 		if(ano < 1970) {
-			throw new NumberFormatException("O ano não pode ser menor que 1970. ");
+			throw new NumberFormatException("O ano não pode ser menor que 1970.");
 		}
+		
 		this.ano = ano;
 	}
 
@@ -127,5 +146,10 @@ public String mostrarDados(String titulo) { // Sempre que não for vazio, não ret
 	}
 	
 	
-
+	
+	
+	
+	
+	
+	
 }
