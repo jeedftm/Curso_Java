@@ -3,7 +3,6 @@ package br.com.impacta.aplicacao;
 import javax.swing.JOptionPane;
 
 import br.com.impacta.classes.Aluno;
-import br.com.impacta.classes.Curso;
 import br.com.impacta.classes.Funcionario;
 import br.com.impacta.classes.Pessoa;
 import br.com.impacta.enumeracoes.Sexo;
@@ -52,7 +51,6 @@ public class AppPessoa {
 	}
 	
 }
-
 
 
 
