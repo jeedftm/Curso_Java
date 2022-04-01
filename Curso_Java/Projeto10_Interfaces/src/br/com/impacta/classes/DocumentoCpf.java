@@ -5,11 +5,16 @@ import br.com.impacta.interfaces.Documento;
 public class DocumentoCpf implements Documento{
 	
 	private String cpf;
+	
+	public DocumentoCpf (String cpf) {
+		super ();
+		this.setNumero(cpf);
+	}
 
 	@Override
 	public void setNumero(String numero) {
 		// TODO Auto-generated method stub
-		if(!numero.matches("[0-9] {11}")) {
+		if(! numero.matches("[0-9] {11}")) {
 			throw new NumberFormatException("CPF deve ter 11 digitos");
 		}
 		this.cpf = numero;

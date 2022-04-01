@@ -1,6 +1,6 @@
 package br.com.impacta.classes;
 
-public class Automovel {
+public class Automovel implements Comparable<Automovel> {
 
 	// FINALIZED
 
@@ -130,6 +130,15 @@ public class Automovel {
 
 	public void setPlaca(String placa) {
 		this.placa = placa;
+	}
+
+	@Override
+	public int compareTo(Automovel arg0) {
+
+		if (this.getMarca().compareTo(arg0.getMarca()) == 0) {
+			return this.getModelo().compareTo(arg0.getMarca());
+		}
+		return this.getMarca().compareTo(arg0.getMarca());
 	}
 
 }

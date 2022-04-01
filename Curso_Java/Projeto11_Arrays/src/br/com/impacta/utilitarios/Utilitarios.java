@@ -26,5 +26,15 @@ public static String gerarEmail2 (String nome, String sobrenome) {
 		String email = nome + " . " + sobrenome + "@impacta.com.br";
 		return removerEspacos(email.toLowerCase()); // Metódo que remove e metodo que converte para minusculas
 	}
+
+	// Método que recebe um Array de número reais e retorna a média dos elementos
+
+public static double calcularMediaArray (double... numerosReais) { // 3 pontos, recebe nada como vários números
+	double soma = 0;
+	for (int i = 0; i < numerosReais.length; i++) {
+		soma += numerosReais [i];
+	}
+	return (soma / numerosReais.length);
+}
 	
 }

@@ -15,16 +15,21 @@ public abstract class Pessoa {
 		super();
 	}
 
-	public Pessoa(String nome, int idade, Sexo sexo) {
+	public Pessoa(String nome, int idade, Sexo sexo, Documento documento) {
 		super();
 		this.setNome(nome);
 		this.setIdade(idade);
 		this.setSexo(sexo);
+		this.setDocumento(documento);
 	}
 
 	public String mostrar() {
 
-		return "\nNome: " + this.getNome() + "\nIdade:" + this.getIdade() + "\nSexo:" + this.getSexo();
+		return "\nNome: " + this.getNome() + "\nIdade:" + this.getIdade() + "\nSexo:" + this.getSexo() + 
+				
+				(this.getDocumento() instanceof DocumentoCpf 
+						? "\nCPF: " : "\nCNPJ " )
+				 + this.getDocumento().getNumero();
 
 	}
 

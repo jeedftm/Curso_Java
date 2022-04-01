@@ -3,12 +3,12 @@ package br.com.impacta.classes;
 import br.com.impacta.enumeracoes.Sexo;
 import br.com.impacta.interfaces.Documento;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements Comparable<Pessoa> {
 
 	private String nome;
 	private int idade;
 	private Sexo sexo;
-	
+
 	private Documento documento;
 
 	public Pessoa() {
@@ -25,11 +25,9 @@ public abstract class Pessoa {
 
 	public String mostrar() {
 
-		return "\nNome: " + this.getNome() + "\nIdade:" + this.getIdade() + "\nSexo:" + this.getSexo() + 
-				
-				(this.getDocumento() instanceof DocumentoCpf 
-						? "\nCPF: " : "\nCNPJ " )
-				 + this.getDocumento().getNumero();
+		return "\nNome: " + this.getNome() + "\nIdade:" + this.getIdade() + "\nSexo:" + this.getSexo() +
+
+				(this.getDocumento() instanceof DocumentoCpf ? "\nCPF: " : "\nCNPJ ") + this.getDocumento().getNumero();
 
 	}
 
@@ -57,6 +55,12 @@ public abstract class Pessoa {
 		this.sexo = sexo;
 	}
 
+	@Override
+	public int compareTo(Pessoa argo0) {
+		// TODO Auto-generated method stub
+		return this.getNome().compareTo(argo0.getNome());
+	}
+
 	public Documento getDocumento() {
 		return documento;
 	}
@@ -64,7 +68,5 @@ public abstract class Pessoa {
 	public void setDocumento(Documento documento) {
 		this.documento = documento;
 	}
-	
-	
 
 }

@@ -1,7 +1,7 @@
 package br.com.impacta.interfaces;
 
 //Interface é abstrato por padrão.
-public interface Figura {
+public interface Figura extends Comparable <Figura> {
 	
 	// Todos os metódos de uma interface são públicos. publicos e abstrators por definição e final.
 	double  calcularArea(); 

@@ -14,5 +14,11 @@ public class AppUtilitarios {
 		
 		String nomeSobrenome = Utilitarios.gerarEmail2("Jedson", "Rodrigues");
 		System.out.println(nomeSobrenome);
+		
+		// Executando o método calcularMediaArray ();
+		double [] lista = {2.5,4.5,6.5,10.1};
+		double media = Utilitarios.calcularMediaArray(lista);
+		
+		System.out.println("Média dos números: " + media);
 	}
 }

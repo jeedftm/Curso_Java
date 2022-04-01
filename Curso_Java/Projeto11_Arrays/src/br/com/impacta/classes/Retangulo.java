@@ -35,6 +35,12 @@ public class Retangulo implements Figura {
 		return this.getBase() * this.getAltura();
 	}
 
+	@Override
+	public int compareTo(Figura o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
 
 // CRIAR O CIRCULO

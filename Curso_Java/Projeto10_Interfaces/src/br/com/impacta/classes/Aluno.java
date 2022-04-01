@@ -1,6 +1,7 @@
 package br.com.impacta.classes;
 
 import br.com.impacta.enumeracoes.Sexo;
+import br.com.impacta.interfaces.Documento;
 
 public class Aluno extends Pessoa {
 
@@ -11,8 +12,8 @@ public class Aluno extends Pessoa {
 		super();
 	}
 
-	public Aluno(String nome, int idade, Sexo sexo, int matricula, Curso curso) {
-		super(nome, idade, sexo);
+	public Aluno(String nome, int idade, Sexo sexo, Documento documento, int matricula, Curso curso) {
+		super(nome, idade, sexo, documento);
 		this.setMatricula(matricula);
 		this.setCurso(curso);
 	}

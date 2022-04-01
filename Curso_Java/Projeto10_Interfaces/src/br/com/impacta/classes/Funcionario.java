@@ -1,6 +1,7 @@
 package br.com.impacta.classes;
 
 import br.com.impacta.enumeracoes.Sexo;
+import br.com.impacta.interfaces.Documento;
 
 //EXTENDS = HERANCA (SUBCLASSE DE PESSOA)
 public class Funcionario extends Pessoa {
@@ -12,9 +13,9 @@ public class Funcionario extends Pessoa {
 		super();
 	}
 
-	public Funcionario(String nome, int idade, Sexo sexo, String cargo, double salario) {
+	public Funcionario(String nome, int idade, Sexo sexo, Documento documento, String cargo, double salario) {
 
-		super(nome, idade, sexo);
+		super(nome, idade, sexo, documento);
 		this.setCargo(cargo);
 		this.setSalario(salario);
 
@@ -25,7 +26,7 @@ public class Funcionario extends Pessoa {
 	@Override
 	public String mostrar() {
 
-		return super.mostrar() + "\nCargo: " + this.getCargo() + "\nSal�rio: " + this.getSalario();
+		return super.mostrar() + "\nCargo: " + this.getCargo() + "\nSalario: " + this.getSalario();
 
 	}
 
