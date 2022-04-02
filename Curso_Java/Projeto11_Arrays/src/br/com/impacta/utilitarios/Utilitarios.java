@@ -34,7 +34,15 @@ public static double calcularMediaArray (double... numerosReais) { // 3 pontos, 
 	for (int i = 0; i < numerosReais.length; i++) {
 		soma += numerosReais [i];
 	}
-	return (soma / numerosReais.length);
+	return numerosReais.length > 0 ? soma / numerosReais.length : soma;
 }
+	public static double calcularMediaNumeros(double... numerosReais) {
+//	double soma = 0;
+//		if (numerosReais.length <= 0) {
+//			return soma;
+//		}
+		return calcularMediaArray (numerosReais);
+		
 	
+	}
 }
