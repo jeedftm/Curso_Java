@@ -13,7 +13,7 @@ public class Funcionario extends Pessoa {
 		super();
 	}
 
-	public Funcionario(String nome, int idade, Sexo sexo, Documento documento, String cargo, double salario) {
+	public Funcionario(String nome, int idade, Sexo sexo, Documento documento, String cargo, double salario) throws IllegalAccessException {
 
 		super(nome, idade, sexo, documento);
 		this.setCargo(cargo);
