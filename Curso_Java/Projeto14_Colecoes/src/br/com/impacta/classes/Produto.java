@@ -50,4 +50,15 @@ public class Produto {
 				+ this.getCategoria() + "\nPre�o: " + this.getPreco();
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return  "("+ this.getCodigo() + ", " +
+					"("+this.getCategoria() + ", " +
+					"("+this.getDescricao() + ")";
+	}
+	
+	
+	
+
 }
