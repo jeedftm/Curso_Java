@@ -1,16 +1,13 @@
 package br.com.impacta.aplicacao;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import br.com.impacta.classes.OrdenacaoCategoria;
-import br.com.impacta.classes.OrdenacaoDescricao;
 import br.com.impacta.classes.Produto;
 
-public class AppList02 {
+public class AppList03 {
+
 	public static void main(String[] args) {
-		//Interface
 		List <Produto> produtos = new ArrayList<>();
 		
 		produtos.add(new Produto("Informática", "Lapop", 4000));
@@ -22,11 +19,21 @@ public class AppList02 {
 		
 		// Apresentando os dados, usando o metódo forEach()
 		System.out.println("Lista Original: ");
-		produtos.forEach(s -> System.out.println(s));
-		Collections.sort(produtos, new OrdenacaoCategoria());
-		System.out.println("--------------------------POR CATEGORIA-----------------------------");
-		produtos.forEach(s -> System.out.println(s));
-		System.out.println("--------------------------POR DESCRIÇÃO-----------------------------");
-		Collections.sort(produtos, new OrdenacaoDescricao());
+		produtos.forEach(produto -> System.out.println(produto));
+		
+		// Ordenação pela categoria
+		produtos.sort((a,b) -> a.getCategoria().compareTo(b.getCategoria()));
+		System.out.println();
+		System.out.println("Listas ordenadas pela categoria");
+		produtos.forEach(produto -> System.out.println(produto));
+		
+		
+
 	}
+
+	private static void produtos.void forEach(Object object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
