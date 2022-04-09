@@ -1,5 +1,7 @@
 package br.com.impacta.classes;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
 public class Curso implements Comparable<Curso> {
 
 	private int codigo;
@@ -60,6 +62,12 @@ public class Curso implements Comparable<Curso> {
 		return this.getDescricao().compareTo(arg0.getDescricao());
 	}
 	
-	
+	@Override
+	public boolean equals (Object obj) {
+		Curso s = (Curso) obj;
+		if (this.getCodigo() == s.getCodigo() &&
+				)
+	}
+	RETURN false;
 
 }
