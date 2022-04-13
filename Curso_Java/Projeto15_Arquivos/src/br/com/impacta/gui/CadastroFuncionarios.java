@@ -1,6 +1,5 @@
 package br.com.impacta.gui;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -8,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -34,6 +35,8 @@ public class CadastroFuncionarios extends JFrame {
 	private JTextField txtCargo;
 	private JTextField txtSalario;
 
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -55,220 +58,292 @@ public class CadastroFuncionarios extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroFuncionarios() {
-		setForeground(new Color(255, 0, 0));
-		setBackground(new Color(192, 192, 192));
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 575, 251);
+		setBounds(100, 100, 468, 456);
 		contentPane = new JPanel();
-		contentPane.setForeground(new Color(255, 0, 0));
-		contentPane.setBackground(new Color(192, 192, 192));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		
 		JPanel panel = new JPanel();
-		panel.setForeground(new Color(255, 0, 0));
-		panel.setBackground(new Color(192, 192, 192));
-		panel.setBounds(6, 2, 615, 213);
+		panel.setBounds(10, 11, 422, 407);
 		contentPane.add(panel);
 		panel.setLayout(null);
-
+		
 		JLabel lblDocumento = new JLabel("Documento:");
-		lblDocumento.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
-		lblDocumento.setForeground(new Color(255, 0, 0));
-		lblDocumento.setBackground(new Color(192, 192, 192));
-		lblDocumento.setBounds(10, 11, 88, 14);
+		lblDocumento.setBounds(10, 11, 77, 14);
 		panel.add(lblDocumento);
-
+		
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
-		lblNome.setForeground(new Color(255, 0, 0));
-		lblNome.setBackground(new Color(192, 192, 192));
-		lblNome.setBounds(10, 36, 88, 14);
+		lblNome.setBounds(10, 36, 77, 14);
 		panel.add(lblNome);
-
+		
 		JLabel lblIdade = new JLabel("Idade:");
-		lblIdade.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
-		lblIdade.setForeground(new Color(255, 0, 0));
-		lblIdade.setBackground(new Color(192, 192, 192));
-		lblIdade.setBounds(10, 61, 88, 14);
+		lblIdade.setBounds(10, 61, 46, 14);
 		panel.add(lblIdade);
-
-		JLabel lblSexo = new JLabel("Sexo:");
-		lblSexo.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
-		lblSexo.setForeground(new Color(255, 0, 0));
-		lblSexo.setBackground(new Color(192, 192, 192));
-		lblSexo.setBounds(10, 86, 88, 14);
-		panel.add(lblSexo);
-
+		
 		JLabel lblCargo = new JLabel("Cargo:");
-		lblCargo.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
-		lblCargo.setForeground(new Color(255, 0, 0));
-		lblCargo.setBackground(new Color(192, 192, 192));
-		lblCargo.setBounds(10, 109, 88, 14);
+		lblCargo.setBounds(10, 128, 46, 14);
 		panel.add(lblCargo);
-
-		JLabel lblSalario = new JLabel("Salario:");
-		lblSalario.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
-		lblSalario.setForeground(new Color(255, 0, 0));
-		lblSalario.setBackground(new Color(192, 192, 192));
-		lblSalario.setBounds(10, 135, 88, 14);
-		panel.add(lblSalario);
-
+		
+		JLabel lblSalrio = new JLabel("Sal\u00E1rio:");
+		lblSalrio.setBounds(10, 169, 46, 14);
+		panel.add(lblSalrio);
+		
 		txtDocumento = new JTextField();
-		txtDocumento.setBounds(108, 9, 105, 20);
+		txtDocumento.setBounds(84, 8, 164, 20);
 		panel.add(txtDocumento);
 		txtDocumento.setColumns(10);
-
+		
 		txtNome = new JTextField();
-		txtNome.setBounds(108, 34, 224, 20);
+		txtNome.setBounds(84, 36, 164, 20);
 		panel.add(txtNome);
 		txtNome.setColumns(10);
-
+		
 		txtIdade = new JTextField();
-		txtIdade.setBounds(108, 59, 27, 20);
+		txtIdade.setBounds(84, 61, 77, 20);
 		panel.add(txtIdade);
 		txtIdade.setColumns(10);
-
+		
+		JLabel lblSexo = new JLabel("Sexo:");
+		lblSexo.setBounds(10, 91, 46, 14);
+		panel.add(lblSexo);
+		
+		JComboBox<Sexo> cmbSexo = new JComboBox();
+		cmbSexo.addItem(Sexo.MASCULINO);
+		cmbSexo.addItem(Sexo.FEMININO);		
+		cmbSexo.setBounds(84, 92, 86, 22);
+		panel.add(cmbSexo);
+		
+		JComboBox<Funcionario> cmbFuncionario = new JComboBox();		
+		cmbFuncionario.setBounds(10, 311, 219, 22);
+		panel.add(cmbFuncionario);
+		
+		
 		txtCargo = new JTextField();
-		txtCargo.setBounds(108, 107, 146, 20);
+		txtCargo.setBounds(84, 125, 111, 20);
 		panel.add(txtCargo);
 		txtCargo.setColumns(10);
-
+		
 		txtSalario = new JTextField();
-		txtSalario.setBounds(108, 133, 76, 20);
+		txtSalario.setBounds(84, 166, 111, 20);
 		panel.add(txtSalario);
 		txtSalario.setColumns(10);
-
-		JComboBox<Sexo> cmbSexo = new JComboBox<Sexo>();
-		cmbSexo.addItem(Sexo.MASCULINO);
-		cmbSexo.addItem(Sexo.FEMININO);
-		cmbSexo.setBounds(108, 83, 105, 22);
-		panel.add(cmbSexo);
-
-		JButton btnIncluirFuncionario = new JButton("Incluir Funcionario");
+		
+		JButton btnIncluirFuncionario = new JButton("Incluir Funcion\u00E1rio");
 		btnIncluirFuncionario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				
 				try {
-					// Obtendo o documento.
-					Documento documento;
+					//Obtendo o documento.					
+					Documento documento;					
 					String doc = txtDocumento.getText();
-					if (doc.length() == 11) {
+					
+					if(doc.length() == 11) {
 						documento = new DocumentoCpf(doc);
-					} else if (doc.length() == 14) {
-						documento = new DocumentoCnpj(doc);
-					} else {
-						throw new Exception("Documento informado não é CPF nem CNPJ.");
 					}
-
-					// Obtendo nome
+					else if (doc.length() == 14) {
+						documento = new DocumentoCnpj(doc);
+					}
+					else {						
+                        throw new Exception("O documento informado não é CPF nem CNPJ");						
+					}	
+					
+					//obtendo o nome
 					String nome = txtNome.getText();
-					// Obtendo a idade
+					
+					//obtendo a idade.
 					int idade = Integer.parseInt(txtIdade.getText());
-					// obtendo o sexo
-					Sexo sexo = (Sexo) cmbSexo.getSelectedItem();
-					// obtendo o cargo.
+										
+					//obtendo o sexo.					
+					Sexo sexo = (Sexo)cmbSexo.getSelectedItem();
+					
+					//obtendo o cargo.
 					String cargo = txtCargo.getText();
-					// obtendo salario
+					
+					//obtendo o salario.
 					double salario = Double.parseDouble(txtSalario.getText());
-					// Instanciando a classe Funcionario
-					Funcionario funcionario = new Funcionario(nome, idade, sexo, documento, cargo, salario);
-					// Apresentado os dados
+					
+					//instanciando a classe Funcionario.
+					Funcionario funcionario = new Funcionario(
+							nome,idade, sexo, documento,cargo,salario						
+							
+							);					
+					
+					//apresentando os dados.
 					JOptionPane.showMessageDialog(CadastroFuncionarios.this, funcionario.mostrar());
-
-				} catch (Exception e) {
-					JOptionPane.showMessageDialog(CadastroFuncionarios.this, "ERROR  : " + e.getMessage(), "Erro",
-							JOptionPane.ERROR_MESSAGE);
+					
+					
+					
+					
+				} catch (Exception e2) {
+					
+					JOptionPane.showMessageDialog(CadastroFuncionarios.this,
+							              "Erro: " + e2.getMessage(),
+					                      "Erro",
+					                      JOptionPane.ERROR_MESSAGE							
+							);					
+					
 				}
-
+				
+				
 			}
 		});
-		btnIncluirFuncionario.setBounds(10, 179, 146, 23);
+		btnIncluirFuncionario.setBounds(10, 208, 151, 23);
 		panel.add(btnIncluirFuncionario);
 		
 		JButton btnGerarArquivo = new JButton("Gerar Arquivo");
 		btnGerarArquivo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				try {
 					
-					Documento documento;
-					//Obtendo o documento
+						
+										
+					//Obtendo o documento.					
+					Documento documento;					
 					String doc = txtDocumento.getText();
 					
-				
-					if (doc.length() == 11) {
+					if(doc.length() == 11) {
 						documento = new DocumentoCpf(doc);
-					} else if (doc.length() == 14) {
-						documento = new DocumentoCnpj(doc);
-					} else {
-						throw new Exception("Documento informado não é CPF nem CNPJ.");
 					}
-
-					// Obtendo nome
-					String nome = txtNome.getText();
-					// Obtendo a idade
-					int idade = Integer.parseInt(txtIdade.getText());
-					// obtendo o sexo
-					Sexo sexo = (Sexo) cmbSexo.getSelectedItem();
-					// obtendo o cargo.
-					String cargo = txtCargo.getText();
-					// obtendo salario
-					double salario = Double.parseDouble(txtSalario.getText());
-					StringBuilder sb = new StringBuilder();
-					sb.append(nome).append(";")
-					.append(nome).append(";")
-					.append(sexo).append(";")
-					.append(doc).append(";")
-					.append(cargo).append(";")
-					.append(salario).append(";");
+					else if (doc.length() == 14) {
+						documento = new DocumentoCnpj(doc);
+					}
+					else {						
+                        throw new Exception("O documento informado não é CPF nem CNPJ");						
+					}	
 					
-					//Escrevendo a linha no arquivo novo.
-					FileWriter writer = new FileWriter(
-							"C:\\Users\\21no0705\\Documents\\Curso_Java\\Arquivos\\funcionarios.csv", true);
-					writer.write(sb.toString());
-					writer.close();
-					JOptionPane.showMessageDialog(CadastroFuncionarios.this, "Dados Gerados!");
+					//obtendo o nome
+					String nome = txtNome.getText();
+					
+					//obtendo a idade.
+					int idade = Integer.parseInt(txtIdade.getText());
+										
+					//obtendo o sexo.					
+					Sexo sexo = (Sexo)cmbSexo.getSelectedItem();
+					
+					//obtendo o cargo.
+					String cargo = txtCargo.getText();
+					
+					//obtendo o salario.
+					double salario = Double.parseDouble(txtSalario.getText());
+					
+					
+					StringBuilder sb = new StringBuilder();		
+					
+					sb.append(nome).append(";")
+					  .append(idade).append(";")
+					  .append(sexo).append(";")
+					  .append(doc).append(";")
+					  .append(cargo).append(";")
+					  .append(salario).append("\n");
+					
+					FileWriter  writer =  new 
+							FileWriter
+		("C:\\Users\\virtual\\Documents\\Curso_Java\\Arquivos\\funcionarios.csv", true); 
+					
+					
+					  writer.write(sb.toString());
+					  writer.close();	
+									
+					  JOptionPane.showMessageDialog(CadastroFuncionarios.this, "Dados gerados com sucesso!");
+					  
+					
+					
 				} catch (Exception e) {
-					JOptionPane.showMessageDialog(CadastroFuncionarios.this, "ERROR  : " + e.getMessage(), "Erro",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(CadastroFuncionarios.this,
+				              "Erro: " + e.getMessage(),
+		                      "Erro",
+		                      JOptionPane.ERROR_MESSAGE							
+				);	
 				}
+				
+				
 			}
 		});
-		btnGerarArquivo.setBounds(166, 179, 117, 23);
+		btnGerarArquivo.setBounds(171, 208, 111, 23);
 		panel.add(btnGerarArquivo);
 		
 		JButton btnGerarLista = new JButton("Gerar Lista");
 		btnGerarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 				try {
-					FileReader reader = new FileReader(
-							"C:\\Users\\21no0705\\Documents\\Curso_Java\\Arquivos\\funcionarios.csv");
-					BufferedReader buffer = new BufferedReader(reader); // Classe responsável por abrir o arquivo e realizar a leitura
-					while(true) { // Responsável por linha a linha do arquivo
-						String linha = buffer.readLine();
-						if (linha == null || linha.length() == 0) {
-							break;
-						}
-						// Cada linha do Excel representa um objeto funcionario.
-						//For na lista de funcionarios.
-						//Adicionar cada funcionario no combo box.
-					}
-				} catch (Exception e2) {
-					JOptionPane.showMessageDialog(CadastroFuncionarios.this, "ERROR  : " + e2.getMessage(), "Erro",
-							JOptionPane.ERROR_MESSAGE);
+					
+					FileReader  reader = 
+ new FileReader("C:\\Users\\virtual\\Documents\\Curso_Java\\Arquivos\\funcionarios.csv"); 
+					
+				 BufferedReader buffer = new BufferedReader(reader);
+					
+				 List<Funcionario> funcionarios  = new ArrayList<>();
+					
+				 while(true) {
+					 
+					 String linha = buffer.readLine();					 
+					 if( linha == null || linha.length() == 0) {
+						 break;
+					 }
+					 
+					 
+					 //cada linha do excel representa um objeto funcionario.
+					 
+					 String[] itens = linha.split(";");
+					 
+					 
+					 Funcionario f = new Funcionario(
+							 
+							 itens[0],
+							 Integer.parseInt(itens[1]),
+							 itens[2].equals("MASCULINO") ? Sexo.MASCULINO : Sexo.FEMININO,
+							 itens[3].length() == 11 ? new DocumentoCpf(itens[3]) : 
+								                       new DocumentoCnpj(itens[3]),
+						     itens[4],
+						     Double.parseDouble(itens[5])
+				);
+							 
+					 funcionarios.add(f);					 
+				 }
+				 
+				 //for na lista de funcionarios
+				 cmbFuncionario.removeAllItems();
+				  for (Funcionario funcionario : funcionarios) {
+					   cmbFuncionario.addItem(funcionario);
+					
 				}
+				 
+				 
+				    //adicionar cada funcionario no combobbox
+				 
+					
+					
+					
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(CadastroFuncionarios.this,
+				              "Erro: " + e2.getMessage(),
+		                      "Erro",
+		                      JOptionPane.ERROR_MESSAGE);	
+				}
+				
+				
+				
+				
+				
+				
+				
 			}
 		});
-		btnGerarLista.setBounds(293, 179, 91, 23);
+		btnGerarLista.setBounds(297, 208, 91, 23);
 		panel.add(btnGerarLista);
 		
-		JComboBox cmbFuncionario = new JComboBox();
-		cmbFuncionario.setBounds(394, 179, 146, 22);
-		panel.add(cmbFuncionario);
 		
-		JLabel lblFuncionriosCadastrados = new JLabel("Funcion\u00E1rios Cadastrados");
-		lblFuncionriosCadastrados.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblFuncionriosCadastrados.setBounds(381, 151, 173, 14);
-		panel.add(lblFuncionriosCadastrados);
+		
+		JLabel lblFuncionariosCadastrados = new JLabel("Funcionarios Cadastrados");
+		lblFuncionariosCadastrados.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblFuncionariosCadastrados.setBounds(10, 277, 232, 23);
+		panel.add(lblFuncionariosCadastrados);
 	}
 }
