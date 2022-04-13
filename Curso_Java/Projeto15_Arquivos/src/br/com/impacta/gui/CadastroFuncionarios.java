@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -55,7 +58,7 @@ public class CadastroFuncionarios extends JFrame {
 		setForeground(new Color(255, 0, 0));
 		setBackground(new Color(192, 192, 192));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 366, 251);
+		setBounds(100, 100, 575, 251);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(255, 0, 0));
 		contentPane.setBackground(new Color(192, 192, 192));
@@ -66,7 +69,7 @@ public class CadastroFuncionarios extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setForeground(new Color(255, 0, 0));
 		panel.setBackground(new Color(192, 192, 192));
-		panel.setBounds(6, 2, 342, 213);
+		panel.setBounds(6, 2, 615, 213);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
@@ -182,5 +185,90 @@ public class CadastroFuncionarios extends JFrame {
 		});
 		btnIncluirFuncionario.setBounds(10, 179, 146, 23);
 		panel.add(btnIncluirFuncionario);
+		
+		JButton btnGerarArquivo = new JButton("Gerar Arquivo");
+		btnGerarArquivo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					
+					Documento documento;
+					//Obtendo o documento
+					String doc = txtDocumento.getText();
+					
+				
+					if (doc.length() == 11) {
+						documento = new DocumentoCpf(doc);
+					} else if (doc.length() == 14) {
+						documento = new DocumentoCnpj(doc);
+					} else {
+						throw new Exception("Documento informado não é CPF nem CNPJ.");
+					}
+
+					// Obtendo nome
+					String nome = txtNome.getText();
+					// Obtendo a idade
+					int idade = Integer.parseInt(txtIdade.getText());
+					// obtendo o sexo
+					Sexo sexo = (Sexo) cmbSexo.getSelectedItem();
+					// obtendo o cargo.
+					String cargo = txtCargo.getText();
+					// obtendo salario
+					double salario = Double.parseDouble(txtSalario.getText());
+					StringBuilder sb = new StringBuilder();
+					sb.append(nome).append(";")
+					.append(nome).append(";")
+					.append(sexo).append(";")
+					.append(doc).append(";")
+					.append(cargo).append(";")
+					.append(salario).append(";");
+					
+					//Escrevendo a linha no arquivo novo.
+					FileWriter writer = new FileWriter(
+							"C:\\Users\\21no0705\\Documents\\Curso_Java\\Arquivos\\funcionarios.csv", true);
+					writer.write(sb.toString());
+					writer.close();
+					JOptionPane.showMessageDialog(CadastroFuncionarios.this, "Dados Gerados!");
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(CadastroFuncionarios.this, "ERROR  : " + e.getMessage(), "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		btnGerarArquivo.setBounds(166, 179, 117, 23);
+		panel.add(btnGerarArquivo);
+		
+		JButton btnGerarLista = new JButton("Gerar Lista");
+		btnGerarLista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					FileReader reader = new FileReader(
+							"C:\\Users\\21no0705\\Documents\\Curso_Java\\Arquivos\\funcionarios.csv");
+					BufferedReader buffer = new BufferedReader(reader); // Classe responsável por abrir o arquivo e realizar a leitura
+					while(true) { // Responsável por linha a linha do arquivo
+						String linha = buffer.readLine();
+						if (linha == null || linha.length() == 0) {
+							break;
+						}
+						// Cada linha do Excel representa um objeto funcionario.
+						//For na lista de funcionarios.
+						//Adicionar cada funcionario no combo box.
+					}
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(CadastroFuncionarios.this, "ERROR  : " + e2.getMessage(), "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		btnGerarLista.setBounds(293, 179, 91, 23);
+		panel.add(btnGerarLista);
+		
+		JComboBox cmbFuncionario = new JComboBox();
+		cmbFuncionario.setBounds(394, 179, 146, 22);
+		panel.add(cmbFuncionario);
+		
+		JLabel lblFuncionriosCadastrados = new JLabel("Funcion\u00E1rios Cadastrados");
+		lblFuncionriosCadastrados.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFuncionriosCadastrados.setBounds(381, 151, 173, 14);
+		panel.add(lblFuncionriosCadastrados);
 	}
 }

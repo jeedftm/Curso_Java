@@ -2,17 +2,24 @@ package br.com.impacta.aplicacao;
 
 import java.io.FileReader;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-public class AppLeitura02 {
+public class AppLeitura03 {
 
 	public static void main(String[] args) {
 		try {
+			
+			JFileChooser chooser = new JFileChooser();
+			if(chooser.showOpenDialog(null) == JFileChooser.CANCEL_OPTION) {
+				return;
+			}
+			
+			
 			// Classe FileReader // Caso use a barra / irá funcionar também
 			// Classe que lê os arquivos
-			FileReader reader = new FileReader(
-					"C:\\Users\\jedson\\Documents\\Curso_Java\\Curso_Java\\Curso_Java\\Arquivos\\nomes.txt");
-
+			FileReader reader = new FileReader(chooser.getSelectedFile());
+					
 			// Leitura do arquivo por array, método mais rápido
 
 			StringBuilder sb = new StringBuilder(); // Sempre que tiver que mexer com String, usaremos esse metódo
@@ -34,5 +41,7 @@ public class AppLeitura02 {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 
 		}
+	
 	}
+
 }
