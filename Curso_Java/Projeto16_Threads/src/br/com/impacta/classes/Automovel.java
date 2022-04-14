@@ -1,94 +1,107 @@
 package br.com.impacta.classes;
 
 public class Automovel implements Comparable<Automovel> {
-
-	// FINALIZED
-
-	// STATIC FINAL TEMOS QUE INFORMAR UM VALOR INICIAL
-	// POR OBRIGACAO. FINAL TEMOS QUE INFORMAR ALGO.
-
-	// Quando criamos uma constante (STATIC + FINAL)
+	
+	
+	//FINALIZED 
+	
+	//STATIC FINAL TEMOS QUE INFORMAR UM VALOR INICIAL 
+	 // POR OBRIGACAO.  FINAL TEMOS QUE INFORMAR ALGO.
+	
+	
+	//Quando criamos uma constante (STATIC + FINAL)
 	// o nome deve ser maisuculo.
 	public static final String PAIS_ORIGEM = "Brasil";
-
-	// atributos.
-	private String marca;
-	private String modelo;
-	private int ano;
-	private String placa;
-
+	
+	//atributos.
+	private	String	marca;  
+	private	String modelo;
+	private	int ano;
+	private	String placa;
+	
 	private final int chassi;
-
-	// construtores
-	public Automovel(String marca, String modelo) {
-		this.chassi = (int) (Math.random() * 1000);
+	
+	
+	//construtores
+	public Automovel(String marca, String modelo) {			
+		this.chassi = (int)(Math.random() *1000);
 		this.setMarca(marca);
-		this.setModelo(modelo);
+		this.setModelo(modelo);	
 	}
-
+	
 	public Automovel(String marca, String modelo, int ano) {
-		this(marca, modelo);
+		this(marca,modelo);	
 		this.setAno(ano);
-
-	}
-
+			
+	}	
+	
 	public Automovel(String marca, String modelo, int ano, String placa) {
-		this(marca, modelo, ano);
+		this(marca,modelo,ano);
 		this.setPlaca(placa);
 	}
-	// public Automovel(String marca, String modelo, int ano, String placa) {
-	//
-	// this.marca = marca;
-	// this.modelo = modelo;
-	// this.ano = ano;
-	// this.placa = placa;
-	// }
-
-	public String mostrar() {
-
-		String titulo = "DADOS DO AUTOMï¿½VEL";
-
-		String reposta = titulo + "\n\nMarca: " + this.getMarca() + "\nModelo: " + this.getModelo() + "\nChassi:"
-				+ this.getChassi();
-
-		if (this.getAno() > 0) {
-
+//	public Automovel(String marca, String modelo, int ano, String placa) {
+//		
+//		this.marca = marca;
+//		this.modelo = modelo;
+//		this.ano = ano;
+//		this.placa = placa;
+//	}
+	
+	
+	
+	public String mostrar() {	
+		
+		String titulo = "DADOS DO AUTOMÓVEL";
+		
+		String reposta = titulo +  "\n\nMarca: " + this.getMarca() + 
+				         "\nModelo: " + this.getModelo() +
+				         "\nChassi:" + this.getChassi();
+				        
+		
+		if(this.getAno() > 0) {
+			
 			reposta += "\nAno: " + this.getAno();
 		}
-
-		if (this.getPlaca() != null) {
-
+		
+		if(this.getPlaca() != null) {
+			
 			reposta += "\nPlaca: " + this.getPlaca();
 		}
-
-		reposta += "\nPais Origem: " + PAIS_ORIGEM;
-
+		
+		reposta +=  "\nPais Origem: " + PAIS_ORIGEM;
+		
+		
 		return reposta;
-
+		
 	}
-
-	public String mostrar(String titulo) {
-
-		String reposta = titulo + "\n\nMarca: " + this.getMarca() + "\nModelo: " + this.getModelo() + "\nChassi:"
-				+ this.getChassi() + "\nAno: " + this.getAno() + "\nPais Origem: " + PAIS_ORIGEM + "\nPlaca: "
-				+ this.getPlaca();
-
+	
+   public String mostrar(String titulo) {	
+		
+		
+		String reposta = titulo +  "\n\nMarca: " + this.getMarca() + 
+				         "\nModelo: " + this.getModelo() +				         
+				         "\nChassi:" + this.getChassi() + 
+				         "\nAno: " + this.getAno() +
+				         "\nPais Origem: " + PAIS_ORIGEM + 
+				         "\nPlaca: " + this.getPlaca();		
+		
 		return reposta;
-
+		
 	}
-
-	// THIS = REFERENCIA A PROPRIA CLASSE
-	// ï¿½ uma referencia que serve para termos acesso a todos
-	// os atributos da classe. (atributos e metodos)
-
-	// TODA CLASSE POSSUI UM THIS. (identifica info que fazem parte da classe)
-
-	public int getChassi() {
+   	
+	
+	//THIS = REFERENCIA A PROPRIA CLASSE
+	 // é uma referencia que serve para termos acesso a todos 
+	    // os atributos da classe. (atributos e metodos)
+	
+	//TODA CLASSE POSSUI UM THIS. (identifica info que fazem parte da classe)
+	
+   public int getChassi() {
 		return chassi;
 	}
-
-	public void lerDados(String marca, String modelo, int ano, String placa) {
-
+	
+	public void lerDados(String marca, String modelo, int ano, String placa ) {
+	
 		this.setMarca(marca);
 		this.setModelo(modelo);
 		this.setAno(ano);
@@ -116,11 +129,11 @@ public class Automovel implements Comparable<Automovel> {
 	}
 
 	public void setAno(int ano) {
-
-		if (ano < 1970) {
+		
+		if(ano < 1970) {
 			throw new NumberFormatException("O ano não pode ser menor que 1970.");
 		}
-
+		
 		this.ano = ano;
 	}
 
@@ -133,12 +146,24 @@ public class Automovel implements Comparable<Automovel> {
 	}
 
 	@Override
-	public int compareTo(Automovel arg0) {
-
-		if (this.getMarca().compareTo(arg0.getMarca()) == 0) {
-			return this.getModelo().compareTo(arg0.getMarca());
+	public int compareTo(Automovel auto) {
+		
+		
+		if(this.getMarca().compareTo(auto.getMarca()) == 0) {
+			return this.getModelo().compareTo(auto.getModelo());
 		}
-		return this.getMarca().compareTo(arg0.getMarca());
+		
+		
+		return this.getMarca().compareTo(auto.getMarca());
+		
+		
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
 }

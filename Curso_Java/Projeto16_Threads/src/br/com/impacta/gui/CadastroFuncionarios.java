@@ -347,3 +347,15 @@ public class CadastroFuncionarios extends JFrame {
 		panel.add(lblFuncionariosCadastrados);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

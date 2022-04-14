@@ -1,20 +1,27 @@
 package br.com.impacta.threads;
 
-import javax.swing.JOptionPane;
-
 public class ContadorThread extends Thread {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		try {
-			for (int i = 0; i < 20; i++) {
-				JOptionPane.showMessageDialog(null, i);
-				Thread.sleep(500); // Atualização de meio segundo,tipo um time out
+	 
+	    try {
+			
+	    	 for (int i = 0; i < 20; i++) {
+	    		 
+	    		 System.out.print("*");
+	    		 Thread.sleep(250);   
 			}
+	    	
+	    	
 		} catch (Exception e) {
 			// TODO: handle exception
-		}
+		}	
+		
+		
 	}
+	
+	
+	
 
 }

@@ -31,7 +31,7 @@ public class Funcionario extends Pessoa {
 		
 		return super.mostrar() + 
 				"\nCargo: " + this.getCargo() +
-				"\nSalï¿½rio: " + this.getSalario();		
+				"\nSalário: " + this.getSalario();		
 		
 	}
 			
